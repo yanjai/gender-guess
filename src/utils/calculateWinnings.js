@@ -29,3 +29,4 @@ export const calculateWinnings = (players, answer) => {
   });
 };
 
+

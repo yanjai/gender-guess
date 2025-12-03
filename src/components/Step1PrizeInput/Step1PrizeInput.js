@@ -99,3 +99,4 @@ const Step1PrizeInput = ({ players, setPlayers, onNext }) => {
 
 export default Step1PrizeInput;
 
+

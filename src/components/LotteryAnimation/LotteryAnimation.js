@@ -73,3 +73,4 @@ const LotteryAnimation = ({ answer, onAnimationComplete }) => {
 
 export default LotteryAnimation;
 
+

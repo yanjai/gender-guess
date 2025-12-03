@@ -8,3 +8,4 @@ export const GENDER_LABELS = {
   [GENDERS.GIRL]: '女生',
 };
 
+
