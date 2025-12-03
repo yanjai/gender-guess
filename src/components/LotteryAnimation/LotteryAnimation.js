@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import { GENDER_LABELS } from '../../constants/gender';
-import './LotteryAnimation.css';
+import { useState, useEffect } from "react";
+import { GENDER_LABELS } from "../../constants/gender";
+import "./LotteryAnimation.css";
 
 const LotteryAnimation = ({ answer, onAnimationComplete }) => {
-  const [currentGender, setCurrentGender] = useState('boy');
+  const [currentGender, setCurrentGender] = useState("boy");
   const [isAnimating, setIsAnimating] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
   const [showCongratulations, setShowCongratulations] = useState(false);
 
-  const genders = ['boy', 'girl'];
+  const genders = ["boy", "girl"];
 
   useEffect(() => {
     if (isAnimating) {
@@ -18,7 +18,7 @@ const LotteryAnimation = ({ answer, onAnimationComplete }) => {
 
       const animationInterval = setInterval(() => {
         const elapsed = Date.now() - startTime;
-        
+
         if (elapsed < duration) {
           // 隨機切換性別
           setCurrentGender(genders[Math.floor(Math.random() * genders.length)]);
@@ -27,7 +27,7 @@ const LotteryAnimation = ({ answer, onAnimationComplete }) => {
           // 顯示答案
           setCurrentGender(answer);
           setShowAnswer(true);
-          
+
           // 顯示恭喜動畫
           setTimeout(() => {
             setShowCongratulations(true);
@@ -59,7 +59,11 @@ const LotteryAnimation = ({ answer, onAnimationComplete }) => {
 
       {(isAnimating || showAnswer) && (
         <div className="animation-container">
-          <div className={`gender-display ${showAnswer ? 'show-answer' : ''} ${showCongratulations ? 'congratulations' : ''}`}>
+          <div
+            className={`gender-display ${showAnswer ? "show-answer" : ""} ${
+              showCongratulations ? "congratulations" : ""
+            }`}
+          >
             {GENDER_LABELS[currentGender]}
           </div>
           {showCongratulations && (
@@ -72,5 +76,3 @@ const LotteryAnimation = ({ answer, onAnimationComplete }) => {
 };
 
 export default LotteryAnimation;
-
-

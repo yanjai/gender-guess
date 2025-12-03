@@ -68,7 +68,7 @@
 
 .cards-container {
   display: flex;
-  gap: 3rem;
+  gap: 1.5rem;
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
@@ -76,6 +76,31 @@
   position: relative;
   min-height: 350px;
   perspective: 1000px;
+}
+
+.cards-container.twin-container {
+  gap: 1rem;
+}
+
+.card {
+  width: 200px;
+  height: 250px;
+  border: 4px solid #ddd;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transform-origin: center bottom;
+}
+
+.card.twin-card {
+  width: 180px;
+  height: 230px;
 }
 
 @keyframes slideLeft {
@@ -174,12 +199,42 @@
   }
 }
 
+.card.highlight-left,
 .card.highlight-boy {
   animation: jumpAndBounceLeft 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
+.card.highlight-right,
 .card.highlight-girl {
   animation: jumpAndBounceRight 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.card.highlight-center {
+  animation: jumpAndBounceCenter 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes jumpAndBounceCenter {
+  0% {
+    transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+  }
+  15% {
+    transform: translateY(-45px) translateX(0) scale(1.22) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-20px) translateX(0) scale(1.15) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-40px) translateX(0) scale(1.2) rotate(0deg);
+  }
+  70% {
+    transform: translateY(-15px) translateX(0) scale(1.16) rotate(0deg);
+  }
+  85% {
+    transform: translateY(-30px) translateX(0) scale(1.18) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0) translateX(0) scale(1.15) rotate(0deg);
+  }
 }
 
 .card:not(.highlighted):not(.answer) {
@@ -328,11 +383,16 @@
 }
 
 .card-icon {
-  font-size: 8rem;
+  font-size: 6rem;
   margin-bottom: 1rem;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
   transition: transform 0.3s ease;
   animation: iconBounce 0.4s ease;
+  line-height: 1;
+}
+
+.card.twin-card .card-icon {
+  font-size: 5rem;
 }
 
 .card.highlighted .card-icon {
@@ -384,10 +444,17 @@
 }
 
 .card-label {
-  font-size: 2rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding: 0 0.5rem;
+  line-height: 1.2;
+}
+
+.card.twin-card .card-label {
+  font-size: 1.1rem;
 }
 
 .card:not(.highlighted):not(.answer) .card-label {

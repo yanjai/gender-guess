@@ -1,5 +1,5 @@
-import { calculateWinnings } from '../../utils/calculateWinnings';
-import './ResultDisplay.css';
+import { calculateWinnings } from "../../utils/calculateWinnings";
+import "./ResultDisplay.css";
 
 const ResultDisplay = ({ players, answer }) => {
   const winners = calculateWinnings(players, answer);
@@ -15,7 +15,10 @@ const ResultDisplay = ({ players, answer }) => {
     );
   }
 
-  const totalWinnings = winners.reduce((sum, winner) => sum + winner.winnings, 0);
+  const totalWinnings = winners.reduce(
+    (sum, winner) => sum + winner.winnings,
+    0
+  );
 
   return (
     <div className="result-display">
@@ -30,14 +33,10 @@ const ResultDisplay = ({ players, answer }) => {
             </li>
           ))}
         </ul>
-        <div className="total-winnings">
-          總獎金：{totalWinnings} 元
-        </div>
+        <div className="total-winnings">總獎金：{totalWinnings} 元</div>
       </div>
     </div>
   );
 };
 
 export default ResultDisplay;
-
-

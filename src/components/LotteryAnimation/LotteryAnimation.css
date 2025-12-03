@@ -58,7 +58,8 @@
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -67,7 +68,8 @@
 }
 
 @keyframes celebrate {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1) rotate(0deg);
   }
   25% {
@@ -98,5 +100,3 @@
     transform: translateY(0);
   }
 }
-
-

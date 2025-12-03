@@ -4,9 +4,16 @@
 }
 
 .step2-answer-select h2 {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: #333;
   font-size: 1.5rem;
+}
+
+.answer-hint {
+  margin-bottom: 2rem;
+  color: #666;
+  font-size: 1rem;
+  font-style: italic;
 }
 
 .answer-options {
@@ -30,8 +37,8 @@
 }
 
 .option-content {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border: 3px solid #ddd;
   border-radius: 12px;
   display: flex;
@@ -40,6 +47,10 @@
   justify-content: center;
   transition: all 0.3s;
   background-color: white;
+}
+
+.option-content.twin {
+  width: 200px;
 }
 
 .answer-option:hover .option-content {
@@ -151,4 +162,3 @@
     font-size: 0.95rem;
   }
 }
-
