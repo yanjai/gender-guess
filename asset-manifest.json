@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/gender-guess/static/css/main.6f2e814b.css",
+    "main.js": "/gender-guess/static/js/main.e0e0c8d5.js",
+    "static/js/453.2f70490f.chunk.js": "/gender-guess/static/js/453.2f70490f.chunk.js",
+    "index.html": "/gender-guess/index.html",
+    "main.6f2e814b.css.map": "/gender-guess/static/css/main.6f2e814b.css.map",
+    "main.e0e0c8d5.js.map": "/gender-guess/static/js/main.e0e0c8d5.js.map",
+    "453.2f70490f.chunk.js.map": "/gender-guess/static/js/453.2f70490f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f2e814b.css",
+    "static/js/main.e0e0c8d5.js"
+  ]
+}
