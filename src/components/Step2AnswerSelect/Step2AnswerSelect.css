@@ -1,0 +1,154 @@
+.step2-answer-select {
+  width: 100%;
+  text-align: center;
+}
+
+.step2-answer-select h2 {
+  margin-bottom: 2rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.answer-options {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.answer-option {
+  position: relative;
+  cursor: pointer;
+}
+
+.answer-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.option-content {
+  width: 200px;
+  height: 200px;
+  border: 3px solid #ddd;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  background-color: white;
+}
+
+.answer-option:hover .option-content {
+  border-color: #667eea;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.answer-option.selected .option-content {
+  border-color: #4caf50;
+  background-color: #e8f5e9;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+}
+
+.option-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.option-label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.btn-confirm {
+  padding: 1rem 3rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-confirm:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-confirm:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* 平板 */
+@media (max-width: 768px) {
+  .step2-answer-select h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .answer-options {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .option-content {
+    width: 180px;
+    height: 180px;
+  }
+
+  .option-icon {
+    font-size: 4.5rem;
+  }
+
+  .option-label {
+    font-size: 1.3rem;
+  }
+
+  .btn-confirm {
+    width: 100%;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* 小手機 */
+@media (max-width: 480px) {
+  .step2-answer-select h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .answer-options {
+    gap: 1rem;
+  }
+
+  .option-content {
+    width: 150px;
+    height: 150px;
+  }
+
+  .option-icon {
+    font-size: 4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .option-label {
+    font-size: 1.1rem;
+  }
+
+  .btn-confirm {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+

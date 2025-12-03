@@ -1,0 +1,571 @@
+.step3-card-animation {
+  width: 100%;
+  text-align: center;
+}
+
+.step3-card-animation h2 {
+  margin-bottom: 2rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.btn-start-lottery {
+  padding: 1rem 3rem;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffd700 25%, #4ecdc4 50%, #45b7d1 75%, #96ceb4 100%);
+  background-size: 300% 300%;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.5),
+              0 0 30px rgba(255, 215, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 3rem;
+  animation: buttonGradient 3s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-start-lottery::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  animation: buttonShine 2s ease infinite;
+}
+
+@keyframes buttonGradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes buttonShine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(360deg);
+  }
+}
+
+.btn-start-lottery:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-start-lottery:active {
+  transform: translateY(0);
+}
+
+.cards-container {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+  min-height: 350px;
+  perspective: 1000px;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.card {
+  width: 250px;
+  height: 300px;
+  border: 4px solid #ddd;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transform-origin: center bottom;
+}
+
+.card.highlighted {
+  border: 4px solid #ff6b6b;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffd700 25%, #4ecdc4 50%, #45b7d1 75%, #96ceb4 100%);
+  background-size: 300% 300%;
+  box-shadow: 0 20px 40px rgba(255, 107, 107, 0.6), 
+              0 0 60px rgba(255, 215, 0, 0.5),
+              0 0 80px rgba(78, 205, 196, 0.4),
+              inset 0 0 30px rgba(255, 255, 255, 0.3);
+  z-index: 10;
+  animation: cardRainbow 1.5s ease infinite, borderColorShift 1.5s ease infinite;
+  position: relative;
+}
+
+.card.highlighted::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ff6b6b, #ffd700, #4ecdc4, #45b7d1, #96ceb4);
+  background-size: 300% 300%;
+  z-index: -1;
+  animation: cardRainbow 1.5s ease infinite;
+  filter: blur(12px);
+  opacity: 0.8;
+}
+
+@keyframes borderColorShift {
+  0% {
+    border-color: #ff6b6b;
+  }
+  25% {
+    border-color: #ffd700;
+  }
+  50% {
+    border-color: #4ecdc4;
+  }
+  75% {
+    border-color: #45b7d1;
+  }
+  100% {
+    border-color: #ff6b6b;
+  }
+}
+
+@keyframes cardRainbow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.card.highlight-boy {
+  animation: jumpAndBounceLeft 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.card.highlight-girl {
+  animation: jumpAndBounceRight 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.card:not(.highlighted):not(.answer) {
+  opacity: 0.5;
+  transform: scale(0.9);
+}
+
+.card.answer {
+  border: 4px solid #4caf50;
+  background: linear-gradient(135deg, #4caf50 0%, #45b7d1 25%, #ffd700 50%, #ff6b6b 75%, #4caf50 100%);
+  background-size: 300% 300%;
+  animation: finalCelebration 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+             answerRainbow 2s ease infinite,
+             answerBorderColor 2s ease infinite;
+  box-shadow: 0 25px 50px rgba(76, 175, 80, 0.7),
+              0 0 80px rgba(69, 183, 209, 0.6),
+              0 0 100px rgba(255, 215, 0, 0.5),
+              0 0 120px rgba(255, 107, 107, 0.4),
+              inset 0 0 40px rgba(255, 255, 255, 0.4);
+  z-index: 20;
+  opacity: 1;
+  position: relative;
+}
+
+.card.answer::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #4caf50, #45b7d1, #ffd700, #ff6b6b, #4caf50);
+  background-size: 300% 300%;
+  z-index: -1;
+  animation: answerRainbow 2s ease infinite;
+  filter: blur(15px);
+  opacity: 0.8;
+}
+
+@keyframes answerBorderColor {
+  0% {
+    border-color: #4caf50;
+  }
+  25% {
+    border-color: #45b7d1;
+  }
+  50% {
+    border-color: #ffd700;
+  }
+  75% {
+    border-color: #ff6b6b;
+  }
+  100% {
+    border-color: #4caf50;
+  }
+}
+
+@keyframes answerRainbow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.card.answer ~ .card:not(.answer) {
+  opacity: 0.3;
+  transform: scale(0.85);
+}
+
+@keyframes jumpAndBounceLeft {
+  0% {
+    transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+  }
+  15% {
+    transform: translateY(-45px) translateX(-35px) scale(1.22) rotate(-15deg);
+  }
+  30% {
+    transform: translateY(-20px) translateX(-10px) scale(1.15) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-40px) translateX(-30px) scale(1.2) rotate(-12deg);
+  }
+  70% {
+    transform: translateY(-15px) translateX(-8px) scale(1.16) rotate(-4deg);
+  }
+  85% {
+    transform: translateY(-30px) translateX(-20px) scale(1.18) rotate(-8deg);
+  }
+  100% {
+    transform: translateY(0) translateX(0) scale(1.15) rotate(0deg);
+  }
+}
+
+@keyframes jumpAndBounceRight {
+  0% {
+    transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+  }
+  15% {
+    transform: translateY(-45px) translateX(35px) scale(1.22) rotate(15deg);
+  }
+  30% {
+    transform: translateY(-20px) translateX(10px) scale(1.15) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-40px) translateX(30px) scale(1.2) rotate(12deg);
+  }
+  70% {
+    transform: translateY(-15px) translateX(8px) scale(1.16) rotate(4deg);
+  }
+  85% {
+    transform: translateY(-30px) translateX(20px) scale(1.18) rotate(8deg);
+  }
+  100% {
+    transform: translateY(0) translateX(0) scale(1.15) rotate(0deg);
+  }
+}
+
+@keyframes finalCelebration {
+  0% {
+    transform: translateY(0) scale(1.15) rotate(0deg);
+  }
+  15% {
+    transform: translateY(-40px) scale(1.25) rotate(-10deg);
+  }
+  30% {
+    transform: translateY(-20px) scale(1.2) rotate(10deg);
+  }
+  45% {
+    transform: translateY(-30px) scale(1.23) rotate(-8deg);
+  }
+  60% {
+    transform: translateY(-10px) scale(1.18) rotate(5deg);
+  }
+  75% {
+    transform: translateY(-15px) scale(1.2) rotate(-3deg);
+  }
+  90% {
+    transform: translateY(-5px) scale(1.17) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) scale(1.2) rotate(0deg);
+  }
+}
+
+.card-icon {
+  font-size: 8rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+  animation: iconBounce 0.4s ease;
+}
+
+.card.highlighted .card-icon {
+  animation: iconBounce 0.4s ease, iconSpin 0.4s ease;
+  transform: scale(1.1);
+}
+
+.card.answer .card-icon {
+  animation: iconCelebrate 1s ease;
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+  }
+}
+
+@keyframes iconSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes iconCelebrate {
+  0%, 100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) scale(1.2) rotate(-15deg);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.15) rotate(15deg);
+  }
+  75% {
+    transform: translateY(-15px) scale(1.18) rotate(-10deg);
+  }
+}
+
+.card-label {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card:not(.highlighted):not(.answer) .card-label {
+  color: #333;
+}
+
+.congratulations-text {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffd700 20%, #4ecdc4 40%, #45b7d1 60%, #96ceb4 80%, #ff6b6b 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 0.5s ease, gradientShift 2s ease infinite, textBounce 1s ease infinite;
+  margin-top: 1rem;
+  filter: drop-shadow(0 4px 8px rgba(255, 107, 107, 0.5))
+          drop-shadow(0 0 20px rgba(255, 215, 0, 0.5))
+          drop-shadow(0 0 30px rgba(78, 205, 196, 0.5));
+  position: relative;
+}
+
+.congratulations-text::after {
+  content: '🎉';
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: confettiSpin 1s ease infinite;
+}
+
+.congratulations-text::before {
+  content: '🎊';
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: confettiSpin 1s ease infinite reverse;
+}
+
+@keyframes confettiSpin {
+  0%, 100% {
+    transform: translateY(-50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) rotate(180deg) scale(1.2);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes textBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+/* 平板 */
+@media (max-width: 1024px) {
+  .cards-container {
+    gap: 2rem;
+  }
+
+  .card {
+    width: 220px;
+    height: 280px;
+  }
+}
+
+/* 手機和平板 */
+@media (max-width: 768px) {
+  .step3-card-animation h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-start-lottery {
+    padding: 0.875rem 2rem;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: auto;
+  }
+
+  .card {
+    width: 200px;
+    height: 250px;
+  }
+
+  .card-icon {
+    font-size: 6rem;
+  }
+
+  .card-label {
+    font-size: 1.5rem;
+  }
+
+  .congratulations-text {
+    font-size: 2rem;
+  }
+
+  .congratulations-text::after,
+  .congratulations-text::before {
+    font-size: 1.5rem;
+    left: -40px;
+    right: -40px;
+  }
+}
+
+/* 小手機 */
+@media (max-width: 480px) {
+  .step3-card-animation h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn-start-lottery {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+
+  .cards-container {
+    gap: 1rem;
+  }
+
+  .card {
+    width: 160px;
+    height: 200px;
+  }
+
+  .card-icon {
+    font-size: 4.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-label {
+    font-size: 1.2rem;
+  }
+
+  .congratulations-text {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .congratulations-text::after,
+  .congratulations-text::before {
+    font-size: 1.2rem;
+    left: -30px;
+    right: -30px;
+  }
+}
+

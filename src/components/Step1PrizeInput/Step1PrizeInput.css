@@ -1,0 +1,185 @@
+.step1-prize-input {
+  width: 100%;
+}
+
+.step1-prize-input h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.form-inputs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.input-name,
+.input-bet,
+.input-guess {
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input-name:focus,
+.input-bet:focus,
+.input-guess:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.input-name {
+  flex: 1;
+  min-width: 120px;
+}
+
+.input-bet {
+  width: 140px;
+}
+
+.input-guess {
+  width: 110px;
+}
+
+.btn-add {
+  padding: 0.75rem 1.5rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+  background-color: #45a049;
+}
+
+.players-list {
+  margin-top: 2rem;
+}
+
+.players-list h3 {
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.players-list ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.player-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+}
+
+.player-item span {
+  flex: 1;
+}
+
+.btn-remove {
+  padding: 0.4rem 1rem;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.3s;
+}
+
+.btn-remove:hover {
+  background-color: #da190b;
+}
+
+.btn-next {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-next:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* 平板 */
+@media (max-width: 768px) {
+  .step1-prize-input h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-inputs {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .input-name,
+  .input-bet,
+  .input-guess {
+    width: 100%;
+  }
+
+  .btn-add {
+    width: 100%;
+  }
+
+  .player-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .btn-remove {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* 小手機 */
+@media (max-width: 480px) {
+  .step1-prize-input h2 {
+    font-size: 1.1rem;
+  }
+
+  .players-list h3 {
+    font-size: 1rem;
+  }
+
+  .player-item {
+    padding: 0.5rem;
+  }
+
+  .player-item span {
+    font-size: 0.9rem;
+    word-break: break-word;
+  }
+
+  .btn-next {
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+}
+
